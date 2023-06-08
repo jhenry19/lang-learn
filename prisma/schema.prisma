@@ -6,48 +6,6 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
-  relationMode = "prisma"
-}
-
-model User {
-  name            String
-  username        String
-  email           String
-  target_language String
-  id              String      @id @unique
-  created_at      DateTime    @default(now())
-  updated_at      DateTime    @updatedAt
-  Responses       Response[]
-  Posts           Question[]
-}
-
-model Response {
-  id               String   @id @default(cuid())
-  content          String
-  feedback         String
-  user             User     @relation(fields: [user_id], references: [id])
-  user_id          String
-  question         Question  @relation(fields: [question_id], references: [id])
-  question_id      String    @unique
-  created_at       DateTime @default(now())
-  updated_at       DateTime @updatedAt
-
-  @@index([question_id])
-  @@index([user_id])
-}
-
-model Question {
-  id            String      @id @default(cuid())
-  question      String
-  has_response  Boolean?    @default(false)
-  user          User        @relation(fields: [user_id], references: [id])
-  user_id       String
-  post_language String
-  created_at    DateTime    @default(now())
-  updated_at    DateTime    @updatedAt
-  Response     Response?
-
-  @@index([user_id])
 }
