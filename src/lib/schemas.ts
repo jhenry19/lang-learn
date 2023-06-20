@@ -41,6 +41,9 @@ const register = userPasswordSchema
     targetLanguage: zfd.text(
       z.string().min(2, "Target Language must be at least 2 character long")
     ),
+    nativeLanguage: zfd.text(
+      z.string().min(2, "Native Language must be at least 2 character long")
+    ),
     confirmPassword: zfd.text(
       z.string().min(8, "Password must be at least 8 characters long")
     ),

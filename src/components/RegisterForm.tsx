@@ -134,6 +134,24 @@ export default function SignupForm() {
       </div>
 
       <div class="grid grid-cols-1 gap-2">
+        <label for="nativeLanguage" class="font-medium text-sm text-zinc-800">
+          Native Language
+        </label>
+        <input
+          type="text"
+          id="nativeLanguage"
+          name="nativeLanguage"
+          class="rounded-md py-1 px-3 bg-zinc-50 text-zinc-600 border border-zinc-300 focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:bg-white"
+        />
+        <Show
+          when={clientErrors()?.fieldErrors.nativeLanguage}
+          fallback={<ErrorPlaceholder />}
+        >
+          <Error message={clientErrors()?.fieldErrors.nativeLanguage} />
+        </Show>
+      </div>
+
+      <div class="grid grid-cols-1 gap-2">
         <label for="password" class="font-medium text-sm text-zinc-800">
           Password
         </label>

@@ -18,7 +18,7 @@ export const post: APIRoute = async ({ request, redirect }) => {
   }
 
   /* Create the user */
-  const { email, password, name, username, targetLanguage } = result.data;
+  const { email, password, name, username, targetLanguage, nativeLanguage } = result.data;
 
   try {
     // create user in firebase
@@ -35,6 +35,7 @@ export const post: APIRoute = async ({ request, redirect }) => {
         username: username,
         email: email,
         target_language: targetLanguage,
+        native_language: nativeLanguage,
         id: userData.uid,
       },
     });

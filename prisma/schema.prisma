@@ -13,6 +13,7 @@ model User {
   username        String
   email           String
   target_language String
+  native_language String
   id              String      @id @unique
   created_at      DateTime    @default(now())
   updated_at      DateTime    @updatedAt
